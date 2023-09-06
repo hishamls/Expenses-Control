@@ -1,4 +1,4 @@
-import "./Expenses.css";
+import "./OldExpenses.css";
 import React, { useState } from "react";
 
 import ExpensesFilter from "./ExpensesFilter";
@@ -19,6 +19,7 @@ export default function Expenses(props) {
   } else {
     filterInfoText = "2019, 2020 & 2021";
   }
+
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
   };
@@ -33,7 +34,7 @@ export default function Expenses(props) {
         selected={filteredYear}
         onChangeFilter={filterChangeHandler}
       />
-      <p>Data for years {filterInfoText} are hidden</p>
+      <p>{filterInfoText} are hidden</p>
       <ExpensesChart expenses={filteredExpenses} />
       <ExpensesList items={filteredExpenses} />
     </Card>

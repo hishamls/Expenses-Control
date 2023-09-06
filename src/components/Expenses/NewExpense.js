@@ -3,15 +3,18 @@ import ExpenseForm from "./ExpenseForm";
 import React, { useState } from "react";
 
 export default function NewExpense(props) {
-  const saveExpenseDataHandler = (enteredExpenseData) => {
-    const expenseData = {
-      ...enteredExpenseData,
-      id: Math.random().toString(),
-    };
-    props.onAddExpense(expenseData);
-    setShow(false);
-  };
   const [isEditing, setShow] = useState(false);
+
+  const saveExpenseDataHandler = (enteredExpenseData) => {
+    const newExpenseData = {
+      ...enteredExpenseData,
+      id: Math.random().toString(), //1. To give an ID
+    };
+
+    props.onAddExpense(newExpenseData); //2. Add the new object to the array
+
+    setShow(false); //3.
+  };
 
   const startEditingHandler = () => {
     setShow(true);

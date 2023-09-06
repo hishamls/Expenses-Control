@@ -6,30 +6,21 @@ export default function ExpenseForm(props) {
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
 
-  const inputChangeHandler = (Identifier, value) => {
-    if (Identifier === "title") {
-      setEnteredTitle(value);
-    } else if (Identifier === "date") {
-      setEnteredDate(value);
-    } else setEnteredAmount(value);
-  };
-  const titleChangeHandler = (event) =>
-    inputChangeHandler("title", event.target.value);
-
-  const amountChangeHandler = (event) =>
-    inputChangeHandler("amount", event.target.value);
-
-  const dateChangeHandler = (event) =>
-    inputChangeHandler("date", event.target.value);
+  const titleChangeHandler = (e) => setEnteredTitle(e.target.value);
+  const amountChangeHandler = (e) => setEnteredAmount(e.target.value);
+  const dateChangeHandler = (e) => setEnteredDate(e.target.value);
 
   const submitHandler = (event) => {
     event.preventDefault();
+
     const expenseData = {
       title: enteredTitle,
       amount: +enteredAmount,
       date: new Date(enteredDate),
     };
+
     props.onSaveExpenseData(expenseData);
+
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
